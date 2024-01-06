@@ -26,18 +26,19 @@ final class ListContactViewController: UIViewController {
         self.listContactUseCase = useCase
         super.init(nibName: nil, bundle: nil)
         self.listContactUseCase?.presenter = self
-        setLayout()
+        setupViews()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setLayout()
+        setupViews()
         self.listContactUseCase?.fetchAllContacts()
     }
 }
 
 extension ListContactViewController {
-    private func setLayout() {
+    private func setupViews() {
+        self.view.backgroundColor = .systemBackground
         self.view.addSubview(contactListView)
         NSLayoutConstraint.activate([
             contactListView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
@@ -47,6 +48,8 @@ extension ListContactViewController {
         ])
     }
 }
+
+typealias ContactListSnapShot = NSDiffableDataSourceSnapshot<ContactListSection, ContactListItem>
 
 extension ListContactViewController: ListContactPresentable {
     func presentListContact(result: ListContactModel.Result) {

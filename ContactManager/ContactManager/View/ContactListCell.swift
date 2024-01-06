@@ -10,13 +10,13 @@ import UIKit
 final class ContactListCell: UITableViewCell {
     private let infoLabel: UILabel = {
         let label = UILabel(frame: .zero)
-        label.font = .preferredFont(forTextStyle: .body)
+        label.font = .preferredFont(forTextStyle: .caption1)
         return label
     }()
     
     private let phoneNumberLabel: UILabel = {
         let label = UILabel(frame: .zero)
-        label.font = .preferredFont(forTextStyle: .body)
+        label.font = .preferredFont(forTextStyle: .caption1)
         return label
     }()
     
@@ -26,7 +26,6 @@ final class ContactListCell: UITableViewCell {
         stack.spacing = 2
         stack.distribution = .fill
         stack.translatesAutoresizingMaskIntoConstraints = false
-//        stack.heightAnchor.constraint(equalToConstant: 20).isActive = true
         return stack
     }()
     
