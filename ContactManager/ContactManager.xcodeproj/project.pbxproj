@@ -99,6 +99,15 @@
 			path = Data;
 			sourceTree = "<group>";
 		};
+		F456EA922B497FCC001BE636 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				F456EA742B495122001BE636 /* Model */,
+				F456EA7D2B4956D6001BE636 /* ListContact */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
 		F48AB7242B47C96100A07C9D = {
 			isa = PBXGroup;
 			children = (
@@ -119,13 +128,12 @@
 			isa = PBXGroup;
 			children = (
 				F48AB7452B47CB2800A07C9D /* App */,
-				F48AB7442B47CB0F00A07C9D /* ViewController */,
 				F48AB7462B47CB8500A07C9D /* Resource */,
-				F456EA742B495122001BE636 /* Model */,
 				F456EA8E2B4978F1001BE636 /* Common */,
+				F456EA922B497FCC001BE636 /* Domain */,
 				F456EA912B497F84001BE636 /* Data */,
+				F48AB7442B47CB0F00A07C9D /* ViewController */,
 				F456EA842B4957EC001BE636 /* View */,
-				F456EA7D2B4956D6001BE636 /* ListContact */,
 			);
 			path = ContactManager;
 			sourceTree = "<group>";
