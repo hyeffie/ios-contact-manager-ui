@@ -6,16 +6,16 @@
 //
 
 struct ListContactUseCase {
-    private let contactList: ContactList
+    private let repository: ContactRepository
     
     weak var presenter: ListContactPresentable?
     
-    init(contactList: ContactList) {
-        self.contactList = contactList
+    init(repository: ContactRepository) {
+        self.repository = repository
     }
     
     func fetchAllContacts() {
-        let contacts = contactList.getContacts()
+        let contacts = repository.requestContacts()
         let result = ListContactModel.Result.SuccessInfo(contacts: contacts)
         presenter?.presentListContact(result: .success(result))
     }
