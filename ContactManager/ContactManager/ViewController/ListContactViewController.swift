@@ -8,7 +8,7 @@
 import UIKit
 
 final class ListContactViewController: UIViewController {
-    private let listContactUseCase: ListContactUseCase?
+    private var listContactUseCase: ListContactUseCase?
     
     private let contactListView: ContactListView = {
         let tableView = ContactListView()
@@ -18,21 +18,21 @@ final class ListContactViewController: UIViewController {
     
     private lazy var contactListDataSource: ContactListDataSource = ContactListDataSource(self.contactListView)
     
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+    
     init(useCase: ListContactUseCase) {
         self.listContactUseCase = useCase
         super.init(nibName: nil, bundle: nil)
-        setLayout()
-    }
-    
-    required init?(coder: NSCoder) {
-        self.listContactUseCase = nil
-        super.init(coder: coder)
+        self.listContactUseCase?.presenter = self
         setLayout()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setLayout()
+        self.listContactUseCase?.fetchAllContacts()
     }
 }
 
@@ -45,5 +45,20 @@ extension ListContactViewController {
             contactListView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             contactListView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
         ])
+    }
+}
+
+extension ListContactViewController: ListContactPresentable {
+    func presentListContact(result: ListContactModel.Result) {
+        var snapshot = ContactListSnapShot()
+        snapshot.appendSections([.contact])
+        switch result {
+        case .success(let successInfo):
+            let contacts = successInfo.contacts.map { contact in ContactListItem.contact(contact) }
+            snapshot.appendItems(contacts, toSection: .contact)
+        case .fail:
+            break
+        }
+        self.contactListDataSource.apply(snapshot)
     }
 }

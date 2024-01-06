@@ -8,7 +8,7 @@
 struct ListContactUseCase {
     private let contactList: ContactList
     
-    private weak var presenter: ListContactPresentable?
+    weak var presenter: ListContactPresentable?
     
     init(contactList: ContactList) {
         self.contactList = contactList

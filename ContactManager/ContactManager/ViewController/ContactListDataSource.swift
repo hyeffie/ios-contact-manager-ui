@@ -33,3 +33,5 @@ final class ContactListDataSource: UITableViewDiffableDataSource<ContactListSect
         self.init(tableView: contactListView, cellProvider: Self.cellProvider)
     }
 }
+
+typealias ContactListSnapShot = NSDiffableDataSourceSnapshot<ContactListSection, ContactListItem>
