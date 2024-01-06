@@ -15,4 +15,10 @@ final class ContactListCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
+    
+    func update(with newContact: Contact) {
+        
+    }
 }
+
+extension ContactListCell: ReusableCell { }
