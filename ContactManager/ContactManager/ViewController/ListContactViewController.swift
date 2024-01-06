@@ -8,12 +8,28 @@
 import UIKit
 
 final class ListContactViewController: UIViewController {
+    private let listContactUseCase: ListContactUseCase?
+    
     private let contactListView: ContactListView = {
         let tableView = ContactListView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
-
+    
+    private lazy var contactListDataSource: ContactListDataSource = ContactListDataSource(self.contactListView)
+    
+    init(useCase: ListContactUseCase) {
+        self.listContactUseCase = useCase
+        super.init(nibName: nil, bundle: nil)
+        setLayout()
+    }
+    
+    required init?(coder: NSCoder) {
+        self.listContactUseCase = nil
+        super.init(coder: coder)
+        setLayout()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setLayout()
