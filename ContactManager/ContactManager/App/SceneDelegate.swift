@@ -14,9 +14,7 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
         
-        let repository = ContactRepositoryImpl()
-        let listContactUseCase = ListContactUseCase(repository: repository)
-        window.rootViewController = ListContactViewController(useCase: listContactUseCase)
+        window.rootViewController = ListContactViewControllerFactory.make()
         window.makeKeyAndVisible()
         self.window = window
     }
