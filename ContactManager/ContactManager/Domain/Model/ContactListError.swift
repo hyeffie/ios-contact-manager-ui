@@ -1,8 +1,8 @@
 //
-//  Error.swift
+//  ContactListError.swift
 //  ContactManager
 //
-//  Created by Effie on 1/6/24.
+//  Created by Effie on 1/7/24.
 //
 
 enum ContactListError: Error {

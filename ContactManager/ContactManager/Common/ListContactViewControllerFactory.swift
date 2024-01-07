@@ -5,8 +5,6 @@
 //  Created by Effie on 1/7/24.
 //
 
-import Foundation
-
 struct ListContactViewControllerFactory {
     static func make() -> ListContactViewController {
         let useCase = Self.makeUseCase()

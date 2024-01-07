@@ -26,7 +26,6 @@ final class ListContactViewController: UIViewController {
         self.listContactUseCase = useCase
         super.init(nibName: nil, bundle: nil)
         self.listContactUseCase?.presenter = self
-        setupViews()
     }
     
     override func viewDidLoad() {
