@@ -31,7 +31,6 @@ final class ContactListCell: UITableViewCell {
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        setLayout()
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
