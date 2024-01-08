@@ -12,6 +12,6 @@ struct ListContactModel {
         }
         
         case success(SuccessInfo)
-        case fail
+        case fail(Error)
     }
 }
