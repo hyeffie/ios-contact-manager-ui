@@ -110,8 +110,7 @@
 			children = (
 				F456EA8F2B497E16001BE636 /* ContactRepository.swift */,
 				F456EAAC2B4B984D001BE636 /* ContactRepositoryError.swift */,
-				F456EAA42B4B92E8001BE636 /* BundleResourceManager.swift */,
-				F456EAA62B4B92F7001BE636 /* BundleResourseError.swift */,
+				F456EAB02B4BA1BF001BE636 /* BundleResource */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -140,6 +139,15 @@
 				F456EA842B4957EC001BE636 /* View */,
 			);
 			path = ListContact;
+			sourceTree = "<group>";
+		};
+		F456EAB02B4BA1BF001BE636 /* BundleResource */ = {
+			isa = PBXGroup;
+			children = (
+				F456EAA42B4B92E8001BE636 /* BundleResourceManager.swift */,
+				F456EAA62B4B92F7001BE636 /* BundleResourseError.swift */,
+			);
+			path = BundleResource;
 			sourceTree = "<group>";
 		};
 		F48AB7242B47C96100A07C9D = {
