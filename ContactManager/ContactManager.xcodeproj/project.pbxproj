@@ -23,6 +23,7 @@
 		F456EAA72B4B92F7001BE636 /* BundleResourseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F456EAA62B4B92F7001BE636 /* BundleResourseError.swift */; };
 		F456EAA92B4B930B001BE636 /* FileExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F456EAA82B4B930B001BE636 /* FileExtension.swift */; };
 		F456EAAD2B4B984D001BE636 /* ContactRepositoryError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F456EAAC2B4B984D001BE636 /* ContactRepositoryError.swift */; };
+		F456EAAF2B4B9A82001BE636 /* contacts.json in Resources */ = {isa = PBXBuildFile; fileRef = F456EAAE2B4B9A82001BE636 /* contacts.json */; };
 		F48AB7312B47C96100A07C9D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48AB7302B47C96100A07C9D /* AppDelegate.swift */; };
 		F48AB7332B47C96100A07C9D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48AB7322B47C96100A07C9D /* SceneDelegate.swift */; };
 		F48AB73A2B47C96300A07C9D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F48AB7392B47C96300A07C9D /* Assets.xcassets */; };
@@ -46,6 +47,7 @@
 		F456EAA62B4B92F7001BE636 /* BundleResourseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleResourseError.swift; sourceTree = "<group>"; };
 		F456EAA82B4B930B001BE636 /* FileExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileExtension.swift; sourceTree = "<group>"; };
 		F456EAAC2B4B984D001BE636 /* ContactRepositoryError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactRepositoryError.swift; sourceTree = "<group>"; };
+		F456EAAE2B4B9A82001BE636 /* contacts.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = contacts.json; sourceTree = "<group>"; };
 		F48AB72D2B47C96100A07C9D /* ContactManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ContactManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F48AB7302B47C96100A07C9D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F48AB7322B47C96100A07C9D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				F48AB7392B47C96300A07C9D /* Assets.xcassets */,
+				F456EAAE2B4B9A82001BE636 /* contacts.json */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -256,6 +259,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F48AB73D2B47C96300A07C9D /* LaunchScreen.storyboard in Resources */,
+				F456EAAF2B4B9A82001BE636 /* contacts.json in Resources */,
 				F48AB73A2B47C96300A07C9D /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

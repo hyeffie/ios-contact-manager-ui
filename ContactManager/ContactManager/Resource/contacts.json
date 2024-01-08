@@ -1,0 +1,103 @@
+[
+    {
+        "name": "Effie",
+        "phoneNumber": "123-456-7890",
+        "age": 25
+    },
+    {
+        "name": "Emily Johnson",
+        "phoneNumber": "234-567-8901",
+        "age": 30
+    },
+    {
+        "name": "Michael Davis",
+        "phoneNumber": "345-678-9012",
+        "age": 28
+    },
+    {
+        "name": "Sophia Wilson",
+        "phoneNumber": "456-789-0123",
+        "age": 35
+    },
+    {
+        "name": "Daniel Miller",
+        "phoneNumber": "567-890-1234",
+        "age": 22
+    },
+    {
+        "name": "Olivia Martinez",
+        "phoneNumber": "678-901-2345",
+        "age": 40
+    },
+    {
+        "name": "Matthew Johnson",
+        "phoneNumber": "789-012-3456",
+        "age": 32
+    },
+    {
+        "name": "Emma Brown",
+        "phoneNumber": "890-123-4567",
+        "age": 27
+    },
+    {
+        "name": "Liam Jones",
+        "phoneNumber": "901-234-5678",
+        "age": 38
+    },
+    {
+        "name": "Ava Taylor",
+        "phoneNumber": "012-345-6789",
+        "age": 31
+    },
+    {
+        "name": "Lucas Anderson",
+        "phoneNumber": "123-456-7890",
+        "age": 29
+    },
+    {
+        "name": "Chloe White",
+        "phoneNumber": "234-567-8901",
+        "age": 33
+    },
+    {
+        "name": "Benjamin Moore",
+        "phoneNumber": "345-678-9012",
+        "age": 26
+    },
+    {
+        "name": "Grace Harris",
+        "phoneNumber": "456-789-0123",
+        "age": 36
+    },
+    {
+        "name": "Christopher Taylor",
+        "phoneNumber": "567-890-1234",
+        "age": 24
+    },
+    {
+        "name": "Sophie Jackson",
+        "phoneNumber": "678-901-2345",
+        "age": 39
+    },
+    {
+        "name": "William Scott",
+        "phoneNumber": "789-012-3456",
+        "age": 34
+    },
+    {
+        "name": "Ella Rivera",
+        "phoneNumber": "890-123-4567",
+        "age": 37
+    },
+    {
+        "name": "Henry Hill",
+        "phoneNumber": "901-234-5678",
+        "age": 23
+    },
+    {
+        "name": "Mia Hall",
+        "phoneNumber": "012-345-6789",
+        "age": 41
+    }
+]
+
