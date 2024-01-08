@@ -15,6 +15,8 @@ enum ContactListItem: Hashable {
     case contact(Contact)
 }
 
+typealias ContactListSnapShot = NSDiffableDataSourceSnapshot<ContactListSection, ContactListItem>
+
 final class ContactListDataSource: UITableViewDiffableDataSource<ContactListSection, ContactListItem> {
     typealias TableView = ContactListView
     typealias ContactCell = ContactListCell
@@ -32,5 +34,13 @@ final class ContactListDataSource: UITableViewDiffableDataSource<ContactListSect
     
     convenience init(_ listView: TableView) {
         self.init(tableView: listView, cellProvider: Self.cellProvider)
+    }
+    
+    func update(with contacts: [Contact]) {
+        var snapshot = ContactListSnapShot()
+        snapshot.appendSections([.contact])
+        let contacts = contacts.map { contact in ContactListItem.contact(contact) }
+        snapshot.appendItems(contacts, toSection: .contact)
+        self.apply(snapshot)
     }
 }

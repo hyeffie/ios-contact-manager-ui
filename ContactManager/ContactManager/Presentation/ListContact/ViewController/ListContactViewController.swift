@@ -16,8 +16,6 @@ final class ListContactViewController: UIViewController {
         return tableView
     }()
     
-    private lazy var contactListDataSource: ContactListDataSource = ContactListDataSource(self.contactListView)
-    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
@@ -48,19 +46,14 @@ extension ListContactViewController {
     }
 }
 
-typealias ContactListSnapShot = NSDiffableDataSourceSnapshot<ContactListSection, ContactListItem>
-
 extension ListContactViewController: ListContactPresentable {
     func presentListContact(result: ListContactModel.Result) {
-        var snapshot = ContactListSnapShot()
-        snapshot.appendSections([.contact])
         switch result {
         case .success(let successInfo):
-            let contacts = successInfo.contacts.map { contact in ContactListItem.contact(contact) }
-            snapshot.appendItems(contacts, toSection: .contact)
+            let newContacts = successInfo.contacts
+            self.contactListView.update(with: newContacts)
         case .fail:
             break
         }
-        self.contactListDataSource.apply(snapshot)
     }
 }
