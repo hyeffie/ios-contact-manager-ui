@@ -59,7 +59,7 @@ extension ListContactViewController: ListContactPresentable {
             let contacts = successInfo.contacts.map { contact in ContactListItem.contact(contact) }
             snapshot.appendItems(contacts, toSection: .contact)
         case .fail:
-            break
+            print("no such file")
         }
         self.contactListDataSource.apply(snapshot)
     }

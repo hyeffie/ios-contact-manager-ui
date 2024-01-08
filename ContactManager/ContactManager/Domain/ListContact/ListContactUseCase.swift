@@ -15,9 +15,13 @@ struct ListContactUseCase {
     }
     
     func fetchAllContacts() {
-        let contacts = repository.requestContacts()
-        let result = ListContactModel.Result.SuccessInfo(contacts: contacts)
-        presenter?.presentListContact(result: .success(result))
+        do {
+            let contacts = try repository.requestContacts()
+            let result = ListContactModel.Result.SuccessInfo(contacts: contacts)
+            presenter?.presentListContact(result: .success(result))
+        } catch {
+            presenter?.presentListContact(result: .fail(error))
+        }
     }
 }
 
