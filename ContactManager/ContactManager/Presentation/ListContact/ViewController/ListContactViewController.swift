@@ -58,8 +58,29 @@ extension ListContactViewController: ListContactPresentable {
             let contacts = successInfo.contacts.map(ContactListItem.contact)    
             snapshot.appendItems(contacts, toSection: .contact)
         case .failure(let error):
-            print("no such file")
+            if let error = error as? LocalizedError {
+                print(error.localizedDescription)
+            }
+            if let error = error as? AlertableError {
+                showErrorAlert(error: error)
+            }
         }
         self.contactListDataSource.apply(snapshot)
+    }
+}
+
+extension ListContactViewController: ErrorAlertPresentableViewController {
+    private func showErrorAlert(error: AlertableError) {
+        switch error {
+        case ContactRepositoryError.notFoundAtBundle:
+            let action = UIAlertAction(title: "재시도", style: .cancel) { [weak self] _ in
+                self?.listContactUseCase?.fetchAllContacts()
+            }
+            self.presentErrorAlert(error: error, additionalAction: action)
+        case ContactRepositoryError.cannotDecode:
+            self.presentErrorAlert(error: error)
+        default:
+            return
+        }
     }
 }

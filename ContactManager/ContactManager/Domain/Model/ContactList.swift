@@ -18,21 +18,22 @@ final class ContactList {
         return self.contacts
     }
     
-    func addContact(_ newContact: Contact) -> [Contact] {
-        self.contacts.append(newContact)
-        return self.contacts
+    func addContacts(_ newContacts: [Contact]) {
+        self.contacts.append(contentsOf: newContacts)
     }
     
-    func deleteContact(at index: Index) throws -> [Contact] {
+    func addContact(_ newContact: Contact) {
+        self.contacts.append(newContact)
+    }
+    
+    func deleteContact(at index: Index) throws {
         guard validateIndex(index) else { throw ContactListError.invalidIndex }
         self.contacts.remove(at: index)
-        return self.contacts
     }
     
-    func updateContact(at index: Index, with newContact: Contact) throws -> [Contact] {
+    func updateContact(at index: Index, with newContact: Contact) throws {
         guard validateIndex(index) else { throw ContactListError.invalidIndex }
         self.contacts[index] = newContact
-        return self.contacts
     }
 }
 
