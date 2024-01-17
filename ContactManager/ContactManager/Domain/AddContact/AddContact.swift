@@ -10,5 +10,9 @@ enum AddContact {
         let name: String
         let age: String
         let phoneNumber: String
+        
+        var isEmpty: Bool {
+            return name.isEmpty && age.isEmpty && phoneNumber.isEmpty
+        }
     }
 }

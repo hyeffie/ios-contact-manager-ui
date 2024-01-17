@@ -32,18 +32,10 @@ struct AddContactUseCase {
     
     func confirmCancel(request: AddContact.Request) {
         do {
-            try confirmIfCancellable(request: request)
+            guard request.isEmpty else { throw AddContactError.someFieldIsFilled }
             presenter?.presentCancelConfirmation(result: .success(()))
         } catch {
             presenter?.presentCancelConfirmation(result: .failure(error))
-        }
-    }
-    
-    private func confirmIfCancellable(request: AddContact.Request) throws {
-        guard request.name.isEmpty,
-              request.age.isEmpty,
-              request.phoneNumber.isEmpty else {
-            throw AddContactError.someFieldIsFilled
         }
     }
 }
