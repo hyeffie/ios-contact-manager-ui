@@ -8,7 +8,7 @@
 import UIKit
 
 final class InputView: UIView {
-    private let formatter: InputFormatter
+    private let formatter: InputFormattable
     
     var currentValue: String {
         return self.textField.text ?? ""
@@ -45,7 +45,7 @@ final class InputView: UIView {
     init(
         fieldName: String,
         keyboardType: UIKeyboardType,
-        formatter: @escaping InputFormatter
+        formatter: InputFormattable
     ) {
         self.formatter = formatter
         super.init(frame: .zero)
@@ -82,7 +82,7 @@ extension InputView: UITextFieldDelegate {
         guard let oldText = textField.text else { return false }
         guard string.isEmpty == false else { return true } // 지울 때
         let newText = NSString(string: oldText).replacingCharacters(in: range, with: string)
-        textField.text = self.formatter(newText)
+        textField.text = self.formatter.format(newText)
         return false
     }
 }

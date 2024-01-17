@@ -12,50 +12,11 @@ final class AddContactViewController: UIViewController {
     
     private weak var coordinator: AddContactViewControllerDelegate?
     
-    private let nameField = InputView(fieldName: "이름", keyboardType: .default) { input in
-        var formattedName = input
-        if input.contains(where: { $0 == " " }) {
-            formattedName = input.components(separatedBy: " ").reduce("") { $0 + $1 }
-        }
-        return formattedName
-    }
+    private let nameField = InputView(fieldName: "이름", keyboardType: .default, formatter: NameFormatter())
     
-    private let ageField = InputView(fieldName: "나이", keyboardType: .numberPad) { input in
-        var formattedAge = input
-        
-        if input.first == "0" {
-            formattedAge = String(input.dropFirst())
-        } else if input.count >= 2 {
-            formattedAge = String(input.prefix(2))
-        }
-        
-        return formattedAge
-    }
+    private let ageField = InputView(fieldName: "나이", keyboardType: .numberPad, formatter: AgeFormatter())
     
-    private let phoneNumberField = InputView(fieldName: "전화번호", keyboardType: .phonePad) { input in
-        func format(with mask: String, phone: String) -> String {
-            let numbers = phone.filter { ch in ch.isNumber }
-            var result = ""
-            var index = numbers.startIndex
-            for ch in mask where index < numbers.endIndex {
-                if ch == "X" {
-                    result.append(numbers[index])
-                    index = numbers.index(after: index)
-                } else {
-                    result.append(ch)
-                }
-            }
-            return result
-        }
-        
-        let formattedText: String
-        if input.first != "0" {
-            formattedText = format(with: "XX-XXX-XXXX", phone: input)
-        } else {
-            formattedText = format(with: "XXX-XXXX-XXXX", phone: input)
-        }
-        return formattedText
-    }
+    private let phoneNumberField = InputView(fieldName: "전화번호", keyboardType: .phonePad, formatter: PhoneNumberFormatter())
     
     private lazy var fieldStack: UIStackView = {
         let stack = UIStackView()
