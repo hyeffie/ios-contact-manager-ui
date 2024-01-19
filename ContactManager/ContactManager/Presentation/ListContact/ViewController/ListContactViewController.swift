@@ -8,9 +8,8 @@
 import UIKit
 
 final class ListContactViewController: UIViewController {
-    enum ListState {
+    private enum ListState {
         case noContacts
-        case noSearchingResults
         case noProblem
     }
     
@@ -40,14 +39,16 @@ final class ListContactViewController: UIViewController {
     }
     
     init(
-        useCase: ListContactUseCase,
+        listContactUseCase: ListContactUseCase,
+        searchContactUseCase: SearchContactUseCase,
         coordinator: ListContactViewControllerDelegate
     ) {
-        self.listContactUseCase = useCase
+        self.listContactUseCase = listContactUseCase
         self.coordinator = coordinator
         super.init(nibName: nil, bundle: nil)
         self.listContactUseCase?.presenter = self
         self.contactListView.delegate = self
+        setSearchController(useCase: searchContactUseCase)
     }
     
     override func viewDidLoad() {
@@ -62,8 +63,6 @@ final class ListContactViewController: UIViewController {
             switch self.listIsEmpty {
             case .noContacts:
                 self.contentUnavailableConfiguration = ContactUnavailableConfiguration.noContacts
-            case .noSearchingResults:
-                self.contentUnavailableConfiguration = ContactUnavailableConfiguration.noSearchingResults
             case .noProblem:
                 self.contentUnavailableConfiguration = nil
             }
@@ -85,7 +84,6 @@ extension ListContactViewController {
             contactListView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
         ])
         setButtons()
-        setSearchController()
     }
     
     private func setButtons() {
@@ -94,9 +92,10 @@ extension ListContactViewController {
         self.navigationItem.rightBarButtonItem = button
     }
     
-    private func setSearchController() {
-        self.searchController = UISearchController(searchResultsController: nil)
-        self.searchController?.searchResultsUpdater = self
+    private func setSearchController(useCase: SearchContactUseCase) {
+        let resultController = SearchContactResultViewController(useCase: useCase)
+        self.searchController = UISearchController(searchResultsController: resultController)
+        self.searchController?.searchResultsUpdater = resultController
         navigationItem.searchController = searchController
     }
     
@@ -154,21 +153,6 @@ extension ListContactViewController: ListContactPresentable {
             handle(error: error)
         }
     }
-    
-    func presentSearchContact(result: Result<ListContact.SuccessInfo, Error>) {
-        var snapshot = ContactListSnapShot()
-        snapshot.appendSections([.contact])
-        switch result {
-        case .success(let successInfo):
-            self.listIsEmpty = .noProblem
-            let contacts = successInfo.contacts.map(ContactListItem.contact)
-            snapshot.appendItems(contacts, toSection: .contact)
-        case .failure(let error):
-            self.listIsEmpty = .noSearchingResults
-            handle(error: error)
-        }
-        self.contactListDataSource.apply(snapshot)
-    }
 }
 
 extension ListContactViewController: ErrorAlertPresentableViewController {
@@ -190,15 +174,5 @@ extension ListContactViewController: ErrorAlertPresentableViewController {
 extension ListContactViewController: ModalViewControllerDismissingHandlable {
     func viewControllerWillAppear() {
         self.listContactUseCase?.fetchAllContacts()
-    }
-}
-
-extension ListContactViewController: UISearchResultsUpdating {
-    func updateSearchResults(for searchController: UISearchController) {
-        guard let query = searchController.searchBar.text, query.isEmpty == false else {
-            self.listContactUseCase?.fetchAllContacts()
-            return
-        }
-        self.listContactUseCase?.searchContact(with: query)
     }
 }

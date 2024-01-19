@@ -22,9 +22,9 @@ final class ListContactCoordinator: Coordinator {
     }
     
     func start() {
-        let useCase = ListContactUseCase(repository: contactRepository)
         let viewController = ListContactViewController(
-            useCase: useCase,
+            listContactUseCase: ListContactUseCase(repository: contactRepository),
+            searchContactUseCase: SearchContactUseCase(repository: contactRepository),
             coordinator: self
         )
         self.navigationController.viewControllers = [viewController]
