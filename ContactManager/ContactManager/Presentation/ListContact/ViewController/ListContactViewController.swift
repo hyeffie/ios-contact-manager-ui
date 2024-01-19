@@ -46,7 +46,7 @@ final class ListContactViewController: UIViewController {
         self.listContactUseCase = useCase
         self.coordinator = coordinator
         super.init(nibName: nil, bundle: nil)
-        self.listContactUseCase?.presenter = self
+        self.listContactUseCase?.listContactPresenter = self
         self.contactListView.delegate = self
     }
     
@@ -95,9 +95,11 @@ extension ListContactViewController {
     }
     
     private func setSearchController() {
-        self.searchController = UISearchController(searchResultsController: nil)
+        let resultController = SearchResultViewController()
+        self.searchController = UISearchController(searchResultsController: resultController)
         self.searchController?.searchResultsUpdater = self
         navigationItem.searchController = searchController
+        self.listContactUseCase?.searchContactPresenter = resultController
     }
     
     private func didTapCreateButton() {
@@ -153,21 +155,6 @@ extension ListContactViewController: ListContactPresentable {
         case .failure(let error):
             handle(error: error)
         }
-    }
-    
-    func presentSearchContact(result: Result<ListContact.SuccessInfo, Error>) {
-        var snapshot = ContactListSnapShot()
-        snapshot.appendSections([.contact])
-        switch result {
-        case .success(let successInfo):
-            self.listIsEmpty = .noProblem
-            let contacts = successInfo.contacts.map(ContactListItem.contact)
-            snapshot.appendItems(contacts, toSection: .contact)
-        case .failure(let error):
-            self.listIsEmpty = .noSearchingResults
-            handle(error: error)
-        }
-        self.contactListDataSource.apply(snapshot)
     }
 }
 

@@ -8,7 +8,9 @@
 struct ListContactUseCase {
     private let repository: ContactRepository
     
-    weak var presenter: ListContactPresentable?
+    weak var listContactPresenter: ListContactPresentable?
+    
+    weak var searchContactPresenter: SearchContactPresentable?
     
     init(repository: ContactRepository) {
         self.repository = repository
@@ -18,18 +20,18 @@ struct ListContactUseCase {
         do {
             let contacts = try repository.requestContacts()
             let successInfo = ListContact.SuccessInfo(contacts: contacts)
-            presenter?.presentListContact(result: .success(successInfo))
+            listContactPresenter?.presentListContact(result: .success(successInfo))
         } catch {
-            presenter?.presentListContact(result: .failure(error))
+            listContactPresenter?.presentListContact(result: .failure(error))
         }
     }
     
     func deleteContact(at index: Int) {
         do {
             try repository.removeContact(at: index)
-            presenter?.presentDeleteContact(result: .success(()))
+            listContactPresenter?.presentDeleteContact(result: .success(()))
         } catch {
-            presenter?.presentDeleteContact(result: .failure(error))
+            listContactPresenter?.presentDeleteContact(result: .failure(error))
         }
     }
     
@@ -39,9 +41,9 @@ struct ListContactUseCase {
         do {
             let matchingContacts = try repository.searchContact(with: queries)
             let successInfo = ListContact.SuccessInfo(contacts: matchingContacts)
-            presenter?.presentSearchContact(result: .success(successInfo))
+            searchContactPresenter?.presentSearchContact(result: .success(successInfo))
         } catch {
-            presenter?.presentSearchContact(result: .failure(error))
+            searchContactPresenter?.presentSearchContact(result: .failure(error))
         }
     }
 }
@@ -51,5 +53,8 @@ import Foundation
 protocol ListContactPresentable: NSObjectProtocol {
     func presentListContact(result: Result<ListContact.SuccessInfo, Error>)
     func presentDeleteContact(result: Result<Void, Error>)
+}
+
+protocol SearchContactPresentable: NSObjectProtocol {
     func presentSearchContact(result: Result<ListContact.SuccessInfo, Error>)
 }

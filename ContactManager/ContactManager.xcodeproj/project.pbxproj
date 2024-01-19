@@ -11,6 +11,7 @@
 		F42BF4792B54CB6C0067C8E8 /* AddContactError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42BF4782B54CB6C0067C8E8 /* AddContactError.swift */; };
 		F42BF47B2B54CC620067C8E8 /* AddContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42BF47A2B54CC620067C8E8 /* AddContact.swift */; };
 		F44184BE2B594C3D0011CB5B /* ContactUnavailableConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44184BD2B594C3D0011CB5B /* ContactUnavailableConfiguration.swift */; };
+		F44184FD2B5A941A0011CB5B /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44184FC2B5A941A0011CB5B /* SearchResultViewController.swift */; };
 		F456EA732B49511C001BE636 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = F456EA722B49511C001BE636 /* Contact.swift */; };
 		F456EA762B4951E9001BE636 /* ContactList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F456EA752B4951E9001BE636 /* ContactList.swift */; };
 		F456EA7A2B4954E4001BE636 /* ListContactUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F456EA792B4954E4001BE636 /* ListContactUseCase.swift */; };
@@ -51,6 +52,7 @@
 		F42BF4782B54CB6C0067C8E8 /* AddContactError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContactError.swift; sourceTree = "<group>"; };
 		F42BF47A2B54CC620067C8E8 /* AddContact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContact.swift; sourceTree = "<group>"; };
 		F44184BD2B594C3D0011CB5B /* ContactUnavailableConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUnavailableConfiguration.swift; sourceTree = "<group>"; };
+		F44184FC2B5A941A0011CB5B /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
 		F456EA722B49511C001BE636 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		F456EA752B4951E9001BE636 /* ContactList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactList.swift; sourceTree = "<group>"; };
 		F456EA792B4954E4001BE636 /* ListContactUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListContactUseCase.swift; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 			isa = PBXGroup;
 			children = (
 				F456EA872B4959CD001BE636 /* ListContactViewController.swift */,
+				F44184FC2B5A941A0011CB5B /* SearchResultViewController.swift */,
 				F456EA892B495C14001BE636 /* ContactListDataSource.swift */,
 			);
 			path = ViewController;
@@ -389,6 +392,7 @@
 				F456EA7A2B4954E4001BE636 /* ListContactUseCase.swift in Sources */,
 				F456EAAD2B4B984D001BE636 /* ContactRepositoryError.swift in Sources */,
 				F456EA882B4959CD001BE636 /* ListContactViewController.swift in Sources */,
+				F44184FD2B5A941A0011CB5B /* SearchResultViewController.swift in Sources */,
 				F48564F32B4D280E00109448 /* UITableView+ReusableCell.swift in Sources */,
 				F456EAA92B4B930B001BE636 /* FileExtension.swift in Sources */,
 				F42BF4772B54CA9C0067C8E8 /* ContactValidationError.swift in Sources */,
